@@ -1,0 +1,4 @@
+3
+H Nemo 50
+M Birdy 65
+K Doge 80

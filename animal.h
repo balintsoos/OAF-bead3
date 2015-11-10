@@ -15,12 +15,12 @@ class Animal
 		int getHappiness();
 		void setHappiness(int h);
 
-		string getName();
-		void setName(string n);
+		std::string getName();
+		void setName(std::string n);
 	
 	protected:
 		int happiness;
-		string name;
+		std::string name;
 };
 
 #endif
