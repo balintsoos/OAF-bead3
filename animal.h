@@ -12,7 +12,7 @@
 class Animal
 {
 	public:
-		Animal(){};
+		//Animal(){};
 
 		int getHappiness();
 		void setHappiness(int h);

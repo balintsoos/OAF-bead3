@@ -23,6 +23,8 @@ struct AnimalStruct
 	int happiness;
 };
 
+void dayHandler(char day);
+
 int main ()
 {
 	// Input Handler
@@ -51,17 +53,43 @@ int main ()
 	{
 		if (animalArray[i].type == 'H')
 		{
-			//collection[i] = new Fish(animalArray[i].name, animalArray[i].happiness);
+			collection[i] = *(new Fish(animalArray[i].name, animalArray[i].happiness));
 		}
 		else if (animalArray[i].type == 'M')
 		{
-			collection[i] = new Bird(animalArray[i].name, animalArray[i].happiness);
+			collection[i] = *(new Bird(animalArray[i].name, animalArray[i].happiness));
 		}
 		else if (animalArray[i].type == 'K')
 		{
-			//collection[i] = new Dog(animalArray[i].name, animalArray[i].happiness);
+			collection[i] = *(new Dog(animalArray[i].name, animalArray[i].happiness));
 		}
+	}
+
+	// Print Animal objects
+	// for (int i = 0; i < numberOfAnimals; ++i)
+	// {
+	// 	cout << collection[i].getName() << endl;
+	// }
+
+	for (string::size_type i = 0; i < days.size(); ++i) {
+    	dayHandler(days[i]);
 	}
 	
 	return 0;
+}
+
+void dayHandler(char day)
+{
+	if (day == 'j')
+	{
+		
+	}
+	else if (day == 'a')
+	{
+
+	}
+	else if (day == 'r')
+	{
+		
+	}
 }
