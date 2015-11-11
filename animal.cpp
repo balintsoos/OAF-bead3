@@ -19,17 +19,24 @@ int Animal::getHappiness()
 
 void Animal::setHappiness(int value)
 {
-	if (happiness + value >= 100)
+	if (happiness != 0)
 	{
-		happiness = 100;
-	}
-	else if (happiness + value <= 0 )
-	{
-		happiness = 0;
+		if (happiness + value >= 100)
+		{
+			happiness = 100;
+		}
+		else if (happiness + value <= 0 )
+		{
+			happiness = 0;
+		}
+		else
+		{
+			happiness += value;
+		}
 	}
 	else
 	{
-		happiness += value;
+		//throw ANIMAL_DEAD;
 	}
 }
 

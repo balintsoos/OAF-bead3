@@ -13,6 +13,7 @@ class Animal
 {
 	public:
 		//Animal(){};
+		enum Exceptions{ANIMAL_DEAD};
 
 		int getHappiness();
 		void setHappiness(int value);
