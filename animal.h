@@ -19,6 +19,9 @@ class Animal
 
 		std::string getName();
 		void setName(std::string n);
+		void goodDay(){};
+		void averageDay(){};
+		void badDay(){};
 	
 	protected:
 		int happiness;

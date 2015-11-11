@@ -23,11 +23,14 @@ struct AnimalStruct
 	int happiness;
 };
 
-void dayHandler(char day);
+void dayHandler(char day, Animal* collection, int length);
+void printHandler(Animal* collection, int length);
 
 int main ()
 {
+	// ===================================================
 	// Input Handler
+	// ===================================================
 	ifstream input("input.txt");
 	
 	int numberOfAnimals;
@@ -47,7 +50,9 @@ int main ()
 
 	input.close();
 
+	// ===================================================
 	// Create Animal objects
+	// ===================================================
 	Animal * collection = new Animal[numberOfAnimals];
 	for (int i = 0; i < numberOfAnimals; ++i)
 	{
@@ -65,31 +70,46 @@ int main ()
 		}
 	}
 
-	// Print Animal objects
-	// for (int i = 0; i < numberOfAnimals; ++i)
-	// {
-	// 	cout << collection[i].getName() << endl;
-	// }
-
+	// ===================================================
+	// Iterate through days
+	// ===================================================
 	for (string::size_type i = 0; i < days.size(); ++i) {
-    	dayHandler(days[i]);
+		cout << "\nAfter Day " << i+1 << " - ";
+		dayHandler(days[i], collection, numberOfAnimals);
+		printHandler(collection, numberOfAnimals);
 	}
 	
 	return 0;
 }
 
-void dayHandler(char day)
+void dayHandler(char day, Animal* collection, int length)
 {
-	if (day == 'j')
-	{
-		
-	}
-	else if (day == 'a')
-	{
+	if (day == 'j') {cout << "GOOD";};
+	if (day == 'a') {cout << "AVERAGE";};
+	if (day == 'r') {cout << "BAD";};
+	cout << "\n----------------------" << endl;
 
-	}
-	else if (day == 'r')
+	for (int i = 0; i < length; ++i)
 	{
-		
+		if (day == 'j')
+		{
+			collection[i].goodDay();
+		}
+		else if (day == 'a')
+		{
+			collection[i].averageDay();
+		}
+		else if (day == 'r')
+		{
+			collection[i].badDay();
+		}
+	}
+}
+
+void printHandler(Animal* collection, int length)
+{
+	for (int i = 0; i < length; ++i)
+	{
+		cout << collection[i].getName() << " - " << collection[i].getHappiness() << endl;
 	}
 }
