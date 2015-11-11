@@ -12,6 +12,8 @@
 class Animal
 {
 	public:
+		Animal(){};
+
 		int getHappiness();
 		void setHappiness(int h);
 

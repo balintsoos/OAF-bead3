@@ -10,6 +10,9 @@
 #include <fstream>
 #include <string>
 #include "animal.h"
+#include "dog.h"
+#include "fish.h"
+#include "bird.h"
 
 using namespace std;
 
@@ -28,7 +31,7 @@ int main ()
 	int numberOfAnimals;
 	input >> numberOfAnimals;
 
-	AnimalStruct * animalArray = new AnimalStruct[numberOfAnimals];
+	AnimalStruct * animalArray = new AnimalStruct [numberOfAnimals];
 
 	for (int i = 0; i < numberOfAnimals; ++i)
 	{
@@ -48,15 +51,15 @@ int main ()
 	{
 		if (animalArray[i].type == 'H')
 		{
-
+			//collection[i] = new Fish(animalArray[i].name, animalArray[i].happiness);
 		}
 		else if (animalArray[i].type == 'M')
 		{
-
+			collection[i] = new Bird(animalArray[i].name, animalArray[i].happiness);
 		}
 		else if (animalArray[i].type == 'K')
 		{
-
+			//collection[i] = new Dog(animalArray[i].name, animalArray[i].happiness);
 		}
 	}
 	

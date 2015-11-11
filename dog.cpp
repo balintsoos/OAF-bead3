@@ -8,10 +8,15 @@
 
 #include <iostream>
 #include <string>
-#include "animal.h"
 #include "dog.h"
 
 using namespace std;
+
+Dog::Dog(std::string & n, int & h)
+{
+    name = n;
+    happiness = h;
+}
 
 void Dog::goodDay()
 {
