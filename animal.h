@@ -19,9 +19,10 @@ class Animal
 
 		std::string getName();
 		void setName(std::string n);
-		void goodDay(){};
-		void averageDay(){};
-		void badDay(){};
+		
+		virtual void goodDay(){};
+		virtual void averageDay(){};
+		virtual void badDay(){};
 	
 	protected:
 		int happiness;

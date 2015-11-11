@@ -1,5 +1,5 @@
 3
-H Nemo 50
-M Birdy 65
-K Doge 80
-jar
+H Nemo 10
+M Birdy 10
+K Doge 10
+jarr

@@ -23,8 +23,8 @@ struct AnimalStruct
 	int happiness;
 };
 
-void dayHandler(char day, Animal* collection, int length);
-void printHandler(Animal* collection, int length);
+void dayHandler(char day, Animal** collection, int length);
+void printHandler(Animal** collection, int length);
 
 int main ()
 {
@@ -53,20 +53,20 @@ int main ()
 	// ===================================================
 	// Create Animal objects
 	// ===================================================
-	Animal * collection = new Animal[numberOfAnimals];
+	Animal ** collection = new Animal *[numberOfAnimals];
 	for (int i = 0; i < numberOfAnimals; ++i)
 	{
 		if (animalArray[i].type == 'H')
 		{
-			collection[i] = *(new Fish(animalArray[i].name, animalArray[i].happiness));
+			collection[i] = new Fish(animalArray[i].name, animalArray[i].happiness);
 		}
 		else if (animalArray[i].type == 'M')
 		{
-			collection[i] = *(new Bird(animalArray[i].name, animalArray[i].happiness));
+			collection[i] = new Bird(animalArray[i].name, animalArray[i].happiness);
 		}
 		else if (animalArray[i].type == 'K')
 		{
-			collection[i] = *(new Dog(animalArray[i].name, animalArray[i].happiness));
+			collection[i] = new Dog(animalArray[i].name, animalArray[i].happiness);
 		}
 	}
 
@@ -82,7 +82,7 @@ int main ()
 	return 0;
 }
 
-void dayHandler(char day, Animal* collection, int length)
+void dayHandler(char day, Animal** collection, int length)
 {
 	if (day == 'j') {cout << "GOOD";};
 	if (day == 'a') {cout << "AVERAGE";};
@@ -93,23 +93,23 @@ void dayHandler(char day, Animal* collection, int length)
 	{
 		if (day == 'j')
 		{
-			collection[i].goodDay();
+			collection[i]->goodDay();
 		}
 		else if (day == 'a')
 		{
-			collection[i].averageDay();
+			collection[i]->averageDay();
 		}
 		else if (day == 'r')
 		{
-			collection[i].badDay();
+			collection[i]->badDay();
 		}
 	}
 }
 
-void printHandler(Animal* collection, int length)
+void printHandler(Animal** collection, int length)
 {
 	for (int i = 0; i < length; ++i)
 	{
-		cout << collection[i].getName() << " - " << collection[i].getHappiness() << endl;
+		cout << collection[i]->getName() << " - " << collection[i]->getHappiness() << endl;
 	}
 }
