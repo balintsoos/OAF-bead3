@@ -20,7 +20,7 @@ Dog::Dog(std::string & n, int & h)
 
 void Dog::goodDay()
 {
-	happiness += 3;
+	setHappiness(3);
 }
 
 void Dog::averageDay()
@@ -30,5 +30,5 @@ void Dog::averageDay()
 
 void Dog::badDay()
 {
-	happiness -= 10;
+	setHappiness(-10);
 }

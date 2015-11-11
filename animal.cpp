@@ -17,9 +17,20 @@ int Animal::getHappiness()
 	return happiness;
 }
 
-void Animal::setHappiness(int h)
+void Animal::setHappiness(int value)
 {
-	happiness = h;
+	if (happiness + value >= 100)
+	{
+		happiness = 100;
+	}
+	else if (happiness + value <= 0 )
+	{
+		happiness = 0;
+	}
+	else
+	{
+		happiness += value;
+	}
 }
 
 string Animal::getName()

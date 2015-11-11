@@ -15,7 +15,7 @@ class Animal
 		//Animal(){};
 
 		int getHappiness();
-		void setHappiness(int h);
+		void setHappiness(int value);
 
 		std::string getName();
 		void setName(std::string n);

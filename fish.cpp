@@ -20,15 +20,15 @@ Fish::Fish(std::string & n, int & h)
 
 void Fish::goodDay()
 {
-	happiness += 1;
+	setHappiness(1);
 }
 
 void Fish::averageDay()
 {
-	happiness -= 3;
+	setHappiness(-3);
 }
 
 void Fish::badDay()
 {
-	happiness -= 5;
+	setHappiness(-5);
 }

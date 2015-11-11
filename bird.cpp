@@ -20,15 +20,15 @@ Bird::Bird(std::string & n, int & h)
 
 void Bird::goodDay()
 {
-	happiness += 2;
+	setHappiness(2);
 }
 
 void Bird::averageDay()
 {
-	happiness -= 1;
+	setHappiness(-1);
 }
 
 void Bird::badDay()
 {
-	happiness -= 3;
+	setHappiness(-3);
 }
