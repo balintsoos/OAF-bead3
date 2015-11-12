@@ -1,0 +1,158 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin2]{inputenc}
+\usepackage[magyar]{babel}
+
+% használt betûtípusok  beállítása
+\usepackage{palatino}
+\usepackage{courier}
+
+%%% felsõ és alsó margó beállítása, elhagyható
+\usepackage[top=3cm,bottom=2cm,inner=2.5cm,outer=2.5cm]{geometry}
+
+% bekezdés behúzásának átállítása
+\setlength{\parindent}{0pt} 
+
+% matematikai képletek írásához
+\usepackage{amsmath}   
+\usepackage{amssymb}
+
+% függvények kapcsolódási szerkezetének rajzolásához
+\usepackage{tikz}
+\usetikzlibrary{shapes}
+
+% stuki rajzolásához be kell tölteni a .tex forrásfájllal azonos könyvtárba helyezett stuki.sty-t
+\usepackage{stuki}
+
+% programkód megjelenítéséhez
+\usepackage{listings}
+\lstset{language=C++, basicstyle=\ttfamily, keywordstyle=\color{blue}\ttfamily, stringstyle=\color{red}\ttfamily}
+
+% specifikáció állapotterében \alatt{arg1}{arg2} saját paranccsal adható meg
+% az arg1 típusértékhalmaz és a hozzá tartozó arg2 változó
+\newcommand*{\alatt}[2]{\underset{\mathop{\vrule height 5pt width 0pt\relax #2}}{#1}}
+
+% a specifikáció utófeltételében használt nagy függvények definiálása
+\DeclareMathOperator*{\SEARCH}{\textit{\small \textbf{SEARCH}}}
+\DeclareMathOperator*{\SELECT}{\textit{\small \textbf{SELECT}}}
+\DeclareMathOperator*{\MAX}{\textit{\small \textbf{MAX}}}
+
+%%% az adatokat tartalmazó doboz rajzolásához
+\usepackage{tcolorbox}
+
+% sorszámozott listához
+\usepackage{enumitem}
+
+% több oszlopos bekezdések
+\usepackage{multicol}
+
+\usepackage{graphicx}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%% SZEMÉLYES ADATOK %%%%%%%%%%%%%%%%%%%%
+\begin{center}
+\begin{tcolorbox}[title=\Large{\textsc{Objektum elvû alkalmazások fejlesztése}}\\Dokumentáció a 3. házi feladathoz,arc=0mm]
+\begin{minipage}[t]{0.5\textwidth}
+	\textbf{Név:} Soós Bálint\\
+	\textbf{Neptun kód:} HDX9MU\\
+	\textbf{Elérhetõség:} soba95@inf.elte.hu
+\end{minipage}
+\begin{minipage}[t]{0.5\textwidth}\raggedleft{
+	\textbf{Csoport:} 8.\\
+	\textbf{Feladatszám:} 7.\\
+	\today}
+\end{minipage}
+\end{tcolorbox}
+\end{center}
+\vspace{18pt}
+
+%%%%%%%%%%%%%%%%%%%% FELADAT LEÍRÁSA %%%%%%%%%%%%%%%%%%%%
+{\textbf {Feladatleírás}}\\[6pt]
+A hobbi állatoknak az életkedvük megõrzéséhez a táplálékon túl egyéb dolgokra is
+szükségük van: a halaknak oxigén dús, megfelelõ hõmérsékletû vízre, a madaraknak tágas,
+tiszta kalitkára, a kutyáknak rendszeres foglalkoztatásra. 
+\vspace{10pt}
+
+Pisti számos hobbi állatot tart: 
+halakat, madarakat és kutyákat. Állatainak van neve és ismerhetõ az életkedvüket mutató 0
+és 100 között szám (0 esetén az állat elpusztul). Pistinek vannak jobb és rosszabb napjai.
+Mikor nagyon jó kedvû, egyik állatáról sem feledkezik meg: ilyenkor a halak életkedve 1-gyel, a madaraké 2-vel, a kutyáké 3-mal nõ. Átlagos napokon csak a kutyáival foglalkozik,
+a többi állat életkedve ilyenkor csökken: a halaké 3-mal, a madaraké 1-gyel. Amikor
+rosszkedvû, csak a legszükségesebb teendõket látja el és ezért minden állat egy kicsit
+szomorúbb lesz: a halak 5 egységgel, a madarak 3-mal, a kutyák 10-zel.
+
+\vspace{10pt}
+Az állatok adatait egy szöveges állományban találjuk. Az elsõ sor tartalmazza az állatok
+számát, amelyet külön-külön sorban az állatok adatai követnek. Ebben egy karakter
+azonosítja az állat fajtáját (H - hal, M - madár, K - kutya), amit szóköz után az állat neve
+követ, majd újabb szóköz után a kezdeti életkedve. Az állományban az állatok felsorolását 
+követõ utolsó sorban egy betû sorozat (sztring) írja le Pisti kedvének az egymás utáni
+napokon való alakulása: j - jó kedvû, a - átlagos, r - rosszkedvû. Feltehetjük, hogy a fájl
+formátuma helyes.
+Szimuláljuk az állatok életkedvének változását Pisti kedvének alakulása során és írja ki
+az állatok adatait minden nap végén!
+ 
+
+\vspace{18pt}
+
+{\textbf {Osztályok}}\\[6pt]
+A feladat megoldásához definiálhatunk egy Animal osztályt, majd örökléssel definiálhatjuk a Dog, Fish, Bird osztályokat.
+
+\vspace{10pt}
+
+Az állatoknak van neve, és boldogsági mutatója, amiket a name és a happiness protected adattagokban tároljuk. Ezekhez az adattagokhoz set és get metódusok is a rendelkezésünkre állnak. A goodDay, averageDay és badDay metódusok az állatok boldogság mutatóját módosítják Pist napja szerint. Ezek virtuális metódusok, amiket a származtatott osztályokban a feladat szerint felüldefiniálok. Az fõosztály-definíciót az animal.h, a származtatott osztályokat a dog.h, bird.h, fish.h fejállományokban helyeztem el.\\
+
+\includegraphics[width=\textwidth]{class}
+
+Az adatokat az input.txt fájlból olvassuk be, amiben az állatok száma, majd soronként az állatok adatai vannak, végül a napok egy karakterláncban. A fájlbeolvasásról, a példányosításáról és a napokon való végigiterálásról a main.cpp felel. Az állatokat egy Animals típusú tömbben tároljuk. Így lényegében egy olyan tömböt használunk, amelyik vegyesen tárolhat különbözõ, de a Animals osztályból származtatott osztályú (típusú) elemeket: a tömb egy elemének tehát alternatív szerkezetû típusa van.
+
+\vspace{18pt}
+
+{\textbf {Implementáció}}\\[2pt]
+\begin{enumerate}[topsep=1pt,noitemsep,leftmargin=*]
+	\item \textit{setHappiness metódus implementálása}\\[4pt]
+	h : happiness, v: módosító érték
+	\begin{stuki}
+		\begin{IF}[90]{3}{\stm{\neg (h = 0)}}
+				\begin{IF}{2}{\stm{h + v >= 100}}
+					\stm{h = 100}
+					\ELSE
+					\begin{IF}{1}{\stm{h + v <= 0}}
+						\stm{h = 0}
+						\ELSE
+						\stm{h = h + v}
+					\end{IF}
+				\end{IF}
+			\ELSE
+			\stm{-}
+		\end{IF}
+	\end{stuki}
+\end{enumerate}
+
+\vspace{18pt}
+\newpage
+%%%%%%%%%%%%%%%%%%%% TESZTELÉSI TERV %%%%%%%%%%%%%%%%%%%%
+{\textbf {Tesztelési terv:}}%\\[2pt]
+\begin{enumerate}[topsep=2pt,noitemsep,label=\Roman*),leftmargin=*]
+	\item A feladat specifikációjára épülõ (fekete doboz) tesztesetek:
+	\begin{enumerate}[noitemsep,label=\arabic*)]
+		\item {happiness 0 kezdõértékkel}
+		\item {happiness 100 kezdõértékkel}
+		\item {happiness 0 és 100 közötti kezdõértékkel}
+		\item {ha a program futása során a happiness eléri a 0-át}
+		\item {ha a program futása során a happiness eléri a 100-at}
+		\item {ha a program futása során a happiness átlépné a 0-át}
+		\item {ha a program futása során a happiness átlépné a 100-at}
+	\end{enumerate}
+	\item A megoldó programra épülõ (fehér doboz) tesztesetek:
+	\begin{enumerate}[noitemsep,label=\arabic*)]
+		\item {0 db állat léterehozása}
+		\item {1 db állat létrehozás}
+		\item {minden állatfajtából legalább 1 létrehozása}
+		\item {0 nap megadása}
+		\item {1 nap megadása}
+		\item {minden napfajtából legalább 1 megadása}
+	\end{enumerate}
+\end{enumerate}
+\end{document}
