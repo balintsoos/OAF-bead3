@@ -25,7 +25,7 @@ void Animal::setHappiness(int value)
 		{
 			happiness = 100;
 		}
-		else if (happiness + value <= 0 )
+		else if (happiness + value <= 0)
 		{
 			happiness = 0;
 		}
@@ -33,10 +33,6 @@ void Animal::setHappiness(int value)
 		{
 			happiness += value;
 		}
-	}
-	else
-	{
-		//throw ANIMAL_DEAD;
 	}
 }
 
